@@ -1,0 +1,4 @@
+- name: add ssh key for test
+  authorized_key:
+    user: test
+    key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOkJj3HX2SqczhiE1AG1Z+rX7xQiuhOkw2k6LlbxzQMI test-key-for-ansible"

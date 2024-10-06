@@ -1,0 +1,12 @@
+- name: istsall unzip
+  package:
+    name: unzip
+
+- name: install terraform
+  unarchive:
+    src: https://hashicorp-releases.yandexcloud.net/terraform/1.9.7/terraform_1.9.7_linux_amd64.zip
+    dest: /usr/local/bin
+    remote_src: yes
+    mode: 0755
+    owner: root
+    group: root

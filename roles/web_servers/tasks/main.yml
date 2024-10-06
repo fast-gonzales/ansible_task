@@ -1,0 +1,41 @@
+- name: install apache and php for ubuntu
+  tags: webserver, apache2, ubuntu
+  apt:
+    name:
+      - apache2
+      - libapache2-mod-php
+    state: latest
+  when: ansible_distribution == "Ubuntu"
+
+- name: start apache2 (ubuntu)
+  tags: apache2, web
+  service:
+    name: apache2
+    state: started
+    enabled: yes
+  when: ansible_distribution == "Ubuntu"
+
+- name: change e-mail address for admin
+  tags: apache2, ubuntu
+  lineinfile: 
+    path: /etc/apache2/apache2.conf
+    regexp: '^ServerAdmin'
+    line: ServerAdmin sasha.bezin@gmail.com
+  when: ansible_distribution == "Ubuntu"
+  register: apache2
+
+- name: restart apache2 (Ubuntu)
+  tags: apache2, web, ubuntu
+  service:
+    name: apache2
+    state: restarted
+  when: apache2.changed
+
+- name: copy default html file for site
+  tags: apache2, webserver, httpd
+  copy:
+    src: default_site.html
+    dest: /var/www/html/index.html
+    owner: root
+    group: root
+    mode: 0644
