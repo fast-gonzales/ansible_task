@@ -10,3 +10,6 @@
 
 [file_servers]
 80.85.255.193
+
+[workstations]
+80.85.255.193
