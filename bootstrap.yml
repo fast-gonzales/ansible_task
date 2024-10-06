@@ -1,0 +1,45 @@
+---
+
+- hosts: all
+  become: true
+  pre_tasks:
+
+  - name: install updates (Ubuntu)
+    tags: always
+    package: 
+        upgrade: dist
+        update_cache: yes
+    when: ansible_distribution == "Ubuntu"
+
+  - name: install updates (CentOS)
+    tags: always
+    package:
+      update_only: yes
+      update_cache: yes
+    when: ansible_distribution == "CentOS"
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: create test user
+    tags: always
+    user:
+      name: test
+      groups: root
+
+  - name: add ssh key for test
+    tags: always
+    authorized_key:
+      user: test
+      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOkJj3HX2SqczhiE1AG1Z+rX7xQiuhOkw2k6LlbxzQMI test-key-for-ansible"
+
+  - name: add sudoers file for test
+    tags: always
+    copy:
+      src: sudoer_test
+      dest: /etc/sudoers.d/test
+      owner: root
+      group: root
+      mode: 0440
+
