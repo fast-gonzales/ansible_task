@@ -2,5 +2,5 @@
   group:
     name: "{{ item.name }}"
     gid: "{{ item.gid }}"
-    state: absent
+    state: present
   loop: "{{ add_group }}"

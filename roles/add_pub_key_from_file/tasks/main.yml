@@ -1,0 +1,8 @@
+- name:
+  copy:
+    src: "ssh_key.pub"
+    dest: "/home/{{ item.name }}/.ssh/authorized_keys"
+    owner: "{{ item.name }}"
+    group: "{{ item.name }}"
+    mode: '0600'
+  loop: "{{ add_user }}"
