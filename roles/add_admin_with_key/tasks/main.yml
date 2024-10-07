@@ -1,0 +1,18 @@
+- name: create admin user
+  user:
+    name: admin
+    groups: root
+
+- name: add ssh key for admin
+  authorized_key:
+    user: admin
+    key: "{{ item.key }}"
+  loop: "{{ admin_key }}"
+
+- name: add sudoers file for admin
+  copy:
+    src: sudoer_test
+    dest: /etc/sudoers.d/admin
+    owner: root
+    group: root
+    mode: 0440

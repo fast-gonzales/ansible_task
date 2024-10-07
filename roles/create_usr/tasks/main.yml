@@ -1,0 +1,14 @@
+- name: Create user
+  user: 
+    name: "{{ item.name }}"
+    uid: "{{ item.id }}"
+    state: present
+  loop: "{{ add_user }}"
+
+- name: Create ssh directory
+  file:
+    path: "/home/{{ item.name }}/.ssh"
+    state: directory
+    owner: "{{ item.name }}"
+    mode: '700'
+  loop: "{{ add_user }}"

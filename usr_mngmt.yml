@@ -1,0 +1,18 @@
+---
+
+- hosts: all
+  become: true
+
+
+  vars_files:
+  - user_vars.yml
+
+
+  roles:
+    - create_usr
+
+  roles:
+    - create_group
+
+  roles:
+    - add_admin_with_key
