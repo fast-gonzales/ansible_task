@@ -8,11 +8,7 @@
 
   roles:
     - create_usr
-      tags: ["create_usr"]
     - create_group
-      tags: ["create_group"]
     - add_admin_with_key
-      tags: ["add_admin"]
     - add_pub_key_from_file
-      tags: ["add_key"]
 
