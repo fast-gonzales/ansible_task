@@ -7,8 +7,17 @@
   - user_vars.yml
 
   roles:
-    - create_usr
-    - create_group
-    - add_admin_with_key
-    - add_pub_key_from_file
+    - role: create_usr
+      tags: ['create_usr']
 
+    - role: create_group
+      tags: ['create_group']
+
+    - role: add_admin_with_key
+      tags: ['add_admin']
+
+    - role: add_pub_key_from_file
+      tags: ['add_pub']
+
+    - role: lock_user 
+      tags: ['lock_user']

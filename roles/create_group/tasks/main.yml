@@ -1,3 +1,5 @@
+#create group from user_vars.yml
+
 - name: Create group
   group:
     name: "{{ item.name }}"

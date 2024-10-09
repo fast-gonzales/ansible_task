@@ -1,8 +1,12 @@
-- name:
+#copy ssh pub key from local machine (if exists in /.keys/) to remote host to user from user_vars.yml
+- name: copy ssh key for remote user
   copy:
-    src: "ssh_key.pub"
+    src: "./keys/{{ item.name }}.pub"
     dest: "/home/{{ item.name }}/.ssh/authorized_keys"
     owner: "{{ item.name }}"
     group: "{{ item.name }}"
     mode: '0600'
   loop: "{{ add_user }}"
+  when: lookup('file', './keys/' + item.name + '.pub', errors='ignore') is not none
+  tags: copy_ssh
+  

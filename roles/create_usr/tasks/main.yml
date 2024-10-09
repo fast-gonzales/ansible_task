@@ -1,3 +1,4 @@
+#create user and ssh directory
 - name: Create user
   user: 
     name: "{{ item.name }}"

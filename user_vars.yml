@@ -1,15 +1,18 @@
 ---
 add_user:
-  - name: 'sasha123'
-    id: '6020'
-  - name: 'kek12345'
-    id: '6021'
+  - name: 'kukich'
+    id: '1337'
+  - name: 'aboba'
+    id: '2228'
 
 add_group:
-  - name: 'ops2'
-    gid: '1130'
-  - name: 'sre-l3'
-    gid: '1131'
+  - name: 'group1'
+    gid: '1111'
+  - name: 'group2'
+    gid: '2222'
+
+blocked_users:
+  - blocked_name: kukich
 
 admin_key:
-  - key: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAdTnor1mcssnBjMzHfWVQTaebAaphDae+wG80Litiy9 ubuntu@ansible-server'  
+  - key: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFMxY2iYnygy4jZdN78m7v3nbwi9ffJnFPRwJgxd3D8e sasha'  

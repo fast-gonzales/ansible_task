@@ -1,0 +1,8 @@
+#blocking list of user
+- name: lock user
+  user:
+    name: "{{ item.blocked_name }}"
+    state: present
+    password_lock: true
+    shell: "/sbin/nologin"
+  loop: "{{ blocked_users }}"
